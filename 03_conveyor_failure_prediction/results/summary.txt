@@ -1,0 +1,37 @@
+ conveyor_id  temperature_c  vibration_mm_s  hours_since_service  stop_next_24h
+           1             69            5.99                  454              0
+           2             53            8.33                  431              0
+           3             75            1.70                  407              0
+           4             77            5.03                 1364              1
+           5             58            2.66                  570              0
+
+       temperature_c  vibration_mm_s  hours_since_service
+count         240.00          240.00               240.00
+mean           72.53            6.56               719.57
+std            16.17            3.08               408.15
+min            45.00            1.10                22.00
+25%            59.75            3.87               377.25
+50%            71.00            6.57               773.50
+75%            88.00            9.28              1055.25
+max           100.00           11.96              1398.00
+               temperature_c  vibration_mm_s
+stop_next_24h                               
+0                      70.25            5.52
+1                      76.31            8.29
+
+
+
+
+Model Brier score: 0.188
+Baseline Brier score: 0.232
+Alert precision: 0.625
+Stoppage recall: 0.455
+Brier score measures probability error; lower is better.
+ conveyor_id  observed_stop  risk
+         209              1 0.928
+         133              1 0.918
+         127              1 0.892
+         165              1 0.882
+          62              1 0.853
+
+Illustrative next-24-hour stoppage risk: 64.2%

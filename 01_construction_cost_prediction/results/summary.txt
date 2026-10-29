@@ -1,0 +1,28 @@
+ project_id  work_type  quantity_m3  unit_price_usd  complexity  actual_cost_usd
+          1   Rockfill          131              32           4          8104.62
+          2   Rockfill         1147              32           4         47898.15
+          3   Concrete          307             110           4         45263.40
+          4 Excavation          802              18           4         22445.39
+          5   Concrete         1405             110           1        162076.48
+
+            planned_cost  actual_cost_usd
+work_type                                
+Concrete         4128300       4462805.85
+Excavation        714168       1000144.60
+Rockfill          880896       1114524.90
+Packages above budget: 114
+
+Training: 90 Testing: 30
+
+
+Model MAE: 2619.68 USD
+Budget MAE: 6769.94 USD
+MAE means average absolute prediction error; lower is better.
+
+   actual  predicted
+ 17290.84   20587.98
+113040.92  112848.73
+162076.48  161297.60
+ 24870.94   23414.40
+124673.25  124265.52
+Example final cost estimate: 57100.52 USD

@@ -1,16 +1,24 @@
-# Construction Data Science and Machine Learning Portfolio
+# Construction Data Science Learning Portfolio
 
-**Murod Rustamov | Educational projects | Synthetic data only | AI-assisted implementation**
+**Murod Rustamov | Beginner/intermediate projects | Synthetic data | AI-assisted implementation**
 
-Three reproducible demonstrations of how data analysis and machine learning could support construction decisions. These are learning prototypes, not company deployments. No Webuild data, branding or confidential information is included. Results measure synthetic assumptions rather than real-world performance.
+Three small learning projects with different business questions and model types. The priority is understandable code that the learner can practise and explain. No professional ML experience, company deployment, measured savings or independent development is implied.
 
-| Project | Decision supported | Method |
-|---|---|---|
-| [Construction cost prediction](01_construction_cost_prediction/) | Review budgets and contingency assumptions | Regression; mean and planned-budget baselines |
-| [Schedule delay risk](02_schedule_delay_risk/) | Prioritise planner review | Binary classification; held-out projects |
-| [Conveyor stoppage risk](03_conveyor_failure_prediction/) | Prioritise conveyor inspections | Binary classification; held-out conveyors |
+| Project | Pandas practice | Model | Output |
+|---|---|---|---|
+| [Cost analysis](01_construction_cost_prediction/walkthrough.ipynb) | Calculate costs and overruns; group by work type | Linear regression | Estimated cost in USD |
+| [Schedule delays](02_schedule_delay_risk/walkthrough.ipynb) | Calculate delay days; count late tasks | Two-level decision tree | Delay alert and visible rules |
+| [Conveyor inspections](03_conveyor_failure_prediction/walkthrough.ipynb) | Describe sensors; compare historical averages | Logistic regression | Next-24-hour stoppage probability |
 
-Each directory is self-contained: read its README, install its requirements, and run `python project.py`. Data, predictions, metrics and evaluation plots are committed for inspection without running code. Notebooks show the full executed Pandas and scikit-learn analysis, including tables and charts; Jupyter is optional and must be installed separately.
+Each folder contains a short `project.py`, an executed notebook with English/Russian explanations, a synthetic CSV, a separate reproducible generator, one plot and saved test results. Open the notebook links above to see the code directly. These are deliberately simple teaching examples, not production systems.
 
-## Responsible interpretation
-AI assisted implementation and documentation. The candidate should review and explain each workflow before presenting it as portfolio work. No production ML engineering experience, realised savings, safety validation or independent development is implied. Predictions require human review. A real pilot would need approved historical data, temporal validation, monitoring and business ownership.
+## Run all projects
+Python 3.11 or newer. From the repository root:
+```bash
+python -m pip install -r requirements.txt
+python run_all.py
+```
+Alternatively, enter one project folder and run `python project.py`. Jupyter is optional and installed separately.
+
+## Limits
+Small, independent synthetic samples make the exercises manageable. Metrics measure assumed generator relationships, not real construction accuracy. A real pilot requires approved historical data, temporal evaluation and operational ownership. No confidential records, resumes or certificates are included.

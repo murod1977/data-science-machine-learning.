@@ -1,11 +1,7 @@
 {
+  "model_mae_usd": 2619.6750100036616,
+  "planned_budget_mae_usd": 6769.9400000000005,
   "synthetic_only": true,
-  "train_rows": 1440,
-  "test_rows": 480,
-  "split": "25% held-out groups; seed 19",
-  "seed": 41,
-  "model_mae_usd": 23077.718066504374,
-  "baseline_mae_usd": 158465.43371527953,
-  "budget_mae_usd": 32376.41534864491,
-  "r2": 0.9610171772489156
+  "train_rows": 90,
+  "test_rows": 30
 }

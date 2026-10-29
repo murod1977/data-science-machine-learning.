@@ -1,59 +1,41 @@
-# Conveyor Belt Stoppage Risk
+# Conveyor Stoppage Risk with Logistic Regression
 
-**Educational prototype | Synthetic data only | AI-assisted implementation**
+**Beginner/intermediate educational project | Synthetic data | AI-assisted implementation**
 
-## Business question
-Which conveyors should an engineer inspect first because of possible unplanned stoppage in the next 24 hours? This independent construction-material handling example uses no company data. It is not deployed, safety-validated or endorsed by Webuild.
+## Question
+Estimate a fictional conveyor's unplanned stoppage risk in the following 24 hours from three prior-inspection measurements.
 
-## Decision and potential value
-Rank inspection candidates using predicted risk. A qualified engineer decides what action is appropriate. Potential value is better maintenance prioritisation and reduced disruption; no real downtime reduction or financial savings have been measured.
+## Start here
+Open [walkthrough.ipynb](walkthrough.ipynb): short Python cells with explanations in English and Russian, saved outputs and a chart. The entire analysis is also visible in [project.py](project.py), approximately 37 non-comment lines. No custom classes, pipelines or random forests.
 
-## Reproduce
-Use Python 3.11 or newer, preferably in a virtual environment. From this folder:
+## Run
+Python 3.11 or newer; preferably a virtual environment. From this project folder:
 ```bash
 python -m pip install -r requirements.txt
 python project.py
 ```
-Jupyter is optional and installed separately. `walkthrough.ipynb` calls the same training code. No API key, external dataset or paid service is needed after dependency installation.
+Jupyter is optional and installed separately. The checked-in CSV is ready to read. To regenerate it, run `python generate_data.py` from this folder.
 
-## Data and assumptions
-The generator creates 1,920 independent fictional conveyor snapshots, one per conveyor. Each input summarises the previous hour; the target is an unplanned stoppage within the following 24 hours. This is a cross-sectional demonstration, not a longitudinal simulation or a remaining-useful-life model. Equipment specifications and sensor thresholds are illustrative. There is no inference about the user's actual conveyors or transported material.
+## Data dictionary and assumptions
+temperature_c: bearing temperature in Celsius. vibration_mm_s: drive vibration in mm/s. hours_since_service: operating hours since maintenance. Target stop_next_24h: 0/1. One row per conveyor; no repeated time windows.
 
-| Predictor | Definition |
-|---|---|
-| `vibration_mm_s` | Prior-hour drive vibration, mm/s |
-| `bearing_temperature_c` | Prior-hour bearing temperature, Celsius |
-| `motor_current_a` | Prior-hour motor current, amperes |
-| `belt_speed_m_s` | Prior-hour belt speed, m/s |
-| `throughput_tph` | Prior-hour transported mass, tonnes/hour |
-| `hours_since_maintenance` | Operating hours since maintenance |
+There are 240 independent examples, one per fictional project/task/conveyor. No repeated entities or overlapping outcome windows. Values are complete, so imputation is unnecessary. The generator's fixed formulas and random noise are visible in `generate_data.py`; these are teaching assumptions, not calibrated engineering laws. No real company data are used. Descriptive summaries use historical outcomes; predictors exclude those outcomes. Model settings are fixed in advance and not chosen by trying alternatives on the test set. The 25% holdout is small; no confidence intervals, cross-validation or probability calibration are claimed.
 
-`conveyor_id` identifies the equipment and is never a predictor. The binary target is `unplanned_stop_next_24h`. Labels are sampled from the explicit assumed logistic probability in `generate_data()`. Coefficients are educational assumptions, not estimated engineering failure laws. Approximately 1.5% of predictor values are missing.
+## Saved results
+```json
+{
+  "brier_score": 0.18765560632096343,
+  "baseline_brier_score": 0.23234567901234565,
+  "precision": 0.625,
+  "recall": 0.45454545454545453,
+  "synthetic_only": true,
+  "train_rows": 180,
+  "test_rows": 60
+}
+```
+![Synthetic evaluation](results/evaluation.png)
 
-## Validation and leakage controls
-Train on 75% of conveyor IDs, test on 25% unseen IDs. Each ID appears once. Median imputation is fitted only on training data. Target and ID are excluded from features. A random forest is compared with a training-prevalence baseline. Seeds are fixed. There is no test-set tuning; the decision threshold is fixed at 0.50 before evaluation. Average precision summarises ranking quality, Brier score assesses probability error, precision measures alert reliability and recall measures the share of stoppages found. These are single-split estimates without confidence intervals.
+`results/summary.txt` contains the printed analysis; `results/test_predictions.csv` contains held-out predictions. These metrics describe only synthetic examples. The simple baseline helps assess whether the model adds value within this exercise; it does not demonstrate commercial savings.
 
-## Recorded synthetic results
-| Metric | Value |
-|---|---:|
-| test_prevalence | 0.2500 |
-| average_precision | 0.6491 |
-| baseline_average_precision | 0.2500 |
-| roc_auc | 0.8409 |
-| brier_score | 0.1338 |
-| baseline_brier_score | 0.1875 |
-| precision_at_05 | 0.7077 |
-| recall_at_05 | 0.3833 |
-
-![Held-out synthetic evaluation](results/evaluation.png)
-
-Full predictions, split assignments and permutation importance are in `results/`. Importance is not causality. The model learns the imposed synthetic relationships; these results do not establish accuracy on a real conveyor system. Missed events and false alarms remain.
-
-## What a real pilot needs
-Approved time-stamped sensor and event data, confirmed failure definitions, alignment of features before the prediction time, sufficient exposure periods and engineering input. For repeated snapshots, keep equipment and overlapping outcome windows separated and use forward-time evaluation with a purge gap. Compare with existing alarms, review probability calibration, agree inspection costs and operational thresholds, and monitor performance. This prototype must not operate or shut down equipment.
-
-## Interview walkthrough
-Explain the 24-hour target; distinguish inputs from future outcomes; show the synthetic generator; explain held-out conveyors and training-only preprocessing; compare average precision and Brier score with the baseline; explain why the model requires validation before operational use.
-
-## Full analysis notebook
-Open [walkthrough.ipynb](walkthrough.ipynb) for the complete executed workflow: synthetic generation, Pandas checks and exploration, group split, scikit-learn Pipeline, baseline comparison, metrics and interpretation. Code, tables and charts are visible directly on GitHub.
+## Interview and next step
+Explain the input columns, target, train/test split, model and baseline before presenting the work. AI assisted code preparation; do not claim independent implementation or professional deployment. Practise changing one small input and explaining the output. Real adoption would require approved historical data, forward-time evaluation, engineering/planning review and monitoring.

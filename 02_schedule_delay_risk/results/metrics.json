@@ -1,15 +1,9 @@
 {
+  "accuracy": 0.75,
+  "baseline_accuracy": 0.5,
+  "precision": 0.8571428571428571,
+  "recall": 0.6,
   "synthetic_only": true,
-  "train_rows": 1440,
-  "test_rows": 480,
-  "split": "25% held-out groups; seed 19",
-  "seed": 42,
-  "test_prevalence": 0.3416666666666667,
-  "average_precision": 0.536674749420736,
-  "baseline_average_precision": 0.3416666666666667,
-  "roc_auc": 0.6911662550169805,
-  "brier_score": 0.20393933346818552,
-  "baseline_brier_score": 0.2255555555555556,
-  "precision_at_05": 0.5748031496062992,
-  "recall_at_05": 0.4451219512195122
+  "train_rows": 120,
+  "test_rows": 40
 }

@@ -1,4 +1,7 @@
 from pathlib import Path
-import subprocess, sys
-for script in sorted(Path(__file__).resolve().parent.glob("0*/project.py")):
-    subprocess.run([sys.executable, str(script)], check=True)
+import subprocess
+import sys
+
+root = Path(__file__).resolve().parent
+for folder in sorted(root.glob("0*")):
+    subprocess.run([sys.executable, "project.py"], cwd=folder, check=True)
