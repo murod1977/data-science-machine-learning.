@@ -62,3 +62,6 @@ Synthetic assumptions simplify reality and can favour the fitted model. Before u
 
 ## Files
 `project.py`: generator, training and evaluation. `data/`: generated CSV. `results/`: saved evidence. `walkthrough.ipynb`: interactive entry point.
+
+## Full analysis notebook
+Open [walkthrough.ipynb](walkthrough.ipynb) for the complete executed workflow: synthetic generation, Pandas checks and exploration, group split, scikit-learn Pipeline, baseline comparison, metrics and interpretation. Code, tables and charts are visible directly on GitHub.

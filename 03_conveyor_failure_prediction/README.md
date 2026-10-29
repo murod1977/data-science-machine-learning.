@@ -54,3 +54,6 @@ Approved time-stamped sensor and event data, confirmed failure definitions, alig
 
 ## Interview walkthrough
 Explain the 24-hour target; distinguish inputs from future outcomes; show the synthetic generator; explain held-out conveyors and training-only preprocessing; compare average precision and Brier score with the baseline; explain why the model requires validation before operational use.
+
+## Full analysis notebook
+Open [walkthrough.ipynb](walkthrough.ipynb) for the complete executed workflow: synthetic generation, Pandas checks and exploration, group split, scikit-learn Pipeline, baseline comparison, metrics and interpretation. Code, tables and charts are visible directly on GitHub.

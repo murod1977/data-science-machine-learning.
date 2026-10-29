@@ -10,7 +10,7 @@ Three reproducible demonstrations of how data analysis and machine learning coul
 | [Schedule delay risk](02_schedule_delay_risk/) | Prioritise planner review | Binary classification; held-out projects |
 | [Conveyor stoppage risk](03_conveyor_failure_prediction/) | Prioritise conveyor inspections | Binary classification; held-out conveyors |
 
-Each directory is self-contained: read its README, install its requirements, and run `python project.py`. Data, predictions, metrics and evaluation plots are committed for inspection without running code. Notebooks provide an interactive entry point; Jupyter is optional and must be installed separately.
+Each directory is self-contained: read its README, install its requirements, and run `python project.py`. Data, predictions, metrics and evaluation plots are committed for inspection without running code. Notebooks show the full executed Pandas and scikit-learn analysis, including tables and charts; Jupyter is optional and must be installed separately.
 
 ## Responsible interpretation
 AI assisted implementation and documentation. The candidate should review and explain each workflow before presenting it as portfolio work. No production ML engineering experience, realised savings, safety validation or independent development is implied. Predictions require human review. A real pilot would need approved historical data, temporal validation, monitoring and business ownership.
