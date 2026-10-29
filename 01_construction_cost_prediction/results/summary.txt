@@ -1,9 +1,41 @@
- project_id  work_type  quantity_m3  unit_price_usd  complexity  actual_cost_usd
-          1   Rockfill          131              32           4          8104.62
-          2   Rockfill         1147              32           4         47898.15
-          3   Concrete          307             110           4         45263.40
-          4 Excavation          802              18           4         22445.39
-          5   Concrete         1405             110           1        162076.48
+   project_id   work_type  ...  complexity  actual_cost_usd
+0           1    Rockfill  ...           4          8104.62
+1           2    Rockfill  ...           4         47898.15
+2           3    Concrete  ...           4         45263.40
+3           4  Excavation  ...           4         22445.39
+4           5    Concrete  ...           1        162076.48
+
+[5 rows x 6 columns]
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 120 entries, 0 to 119
+Data columns (total 6 columns):
+ #   Column           Non-Null Count  Dtype  
+---  ------           --------------  -----  
+ 0   project_id       120 non-null    int64  
+ 1   work_type        120 non-null    object 
+ 2   quantity_m3      120 non-null    int64  
+ 3   unit_price_usd   120 non-null    int64  
+ 4   complexity       120 non-null    int64  
+ 5   actual_cost_usd  120 non-null    float64
+dtypes: float64(1), int64(4), object(1)
+memory usage: 5.8+ KB
+       project_id  quantity_m3  unit_price_usd  complexity  actual_cost_usd
+count      120.00       120.00          120.00      120.00           120.00
+mean        60.50       872.78           49.62        3.03         54812.29
+std         34.79       377.57           39.36        1.41         51484.52
+min          1.00       100.00           18.00        1.00           391.34
+25%         30.75       555.00           18.00        2.00         20529.03
+50%         60.50       919.50           32.00        3.00         29652.04
+75%         90.25      1178.25          110.00        4.00         81201.73
+max        120.00      1492.00          110.00        5.00        174305.08
+Missing values:
+project_id         0
+work_type          0
+quantity_m3        0
+unit_price_usd     0
+complexity         0
+actual_cost_usd    0
+dtype: int64
 
             planned_cost  actual_cost_usd
 work_type                                

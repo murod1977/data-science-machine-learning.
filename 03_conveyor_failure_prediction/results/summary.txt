@@ -1,9 +1,41 @@
- conveyor_id  temperature_c  vibration_mm_s  hours_since_service  stop_next_24h
-           1             69            5.99                  454              0
-           2             53            8.33                  431              0
-           3             75            1.70                  407              0
-           4             77            5.03                 1364              1
-           5             58            2.66                  570              0
+   conveyor_id  temperature_c  ...  hours_since_service  stop_next_24h
+0            1             69  ...                  454              0
+1            2             53  ...                  431              0
+2            3             75  ...                  407              0
+3            4             77  ...                 1364              1
+4            5             58  ...                  570              0
+
+[5 rows x 5 columns]
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 240 entries, 0 to 239
+Data columns (total 5 columns):
+ #   Column               Non-Null Count  Dtype  
+---  ------               --------------  -----  
+ 0   conveyor_id          240 non-null    int64  
+ 1   temperature_c        240 non-null    int64  
+ 2   vibration_mm_s       240 non-null    float64
+ 3   hours_since_service  240 non-null    int64  
+ 4   stop_next_24h        240 non-null    int64  
+dtypes: float64(1), int64(4)
+memory usage: 9.5 KB
+       conveyor_id  temperature_c  ...  hours_since_service  stop_next_24h
+count       240.00         240.00  ...               240.00         240.00
+mean        120.50          72.53  ...               719.57           0.38
+std          69.43          16.17  ...               408.15           0.49
+min           1.00          45.00  ...                22.00           0.00
+25%          60.75          59.75  ...               377.25           0.00
+50%         120.50          71.00  ...               773.50           0.00
+75%         180.25          88.00  ...              1055.25           1.00
+max         240.00         100.00  ...              1398.00           1.00
+
+[8 rows x 5 columns]
+Missing values:
+conveyor_id            0
+temperature_c          0
+vibration_mm_s         0
+hours_since_service    0
+stop_next_24h          0
+dtype: int64
 
        temperature_c  vibration_mm_s  hours_since_service
 count         240.00          240.00               240.00

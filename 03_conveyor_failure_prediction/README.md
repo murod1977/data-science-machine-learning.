@@ -6,7 +6,7 @@
 Estimate a fictional conveyor's unplanned stoppage risk in the following 24 hours from three prior-inspection measurements.
 
 ## Start here
-Open [walkthrough.ipynb](walkthrough.ipynb): short Python cells with explanations in English and Russian, saved outputs and a chart. The entire analysis is also visible in [project.py](project.py), approximately 37 non-comment lines. No custom classes, pipelines or random forests.
+Open [walkthrough.ipynb](walkthrough.ipynb): short Python cells with explanations in English and Russian, saved outputs and a chart. The workflow starts with Pandas (`head`, `info`, `describe`, missing-value checks), then Matplotlib/Seaborn exploration, then a simple scikit-learn model. The entire analysis is also visible in [project.py](project.py), approximately 47 non-comment lines. No custom classes, pipelines or random forests.
 
 ## Run
 Python 3.11 or newer; preferably a virtual environment. From this project folder:
@@ -37,5 +37,5 @@ There are 240 independent examples, one per fictional project/task/conveyor. No 
 
 `results/summary.txt` contains the printed analysis; `results/test_predictions.csv` contains held-out predictions. These metrics describe only synthetic examples. The simple baseline helps assess whether the model adds value within this exercise; it does not demonstrate commercial savings.
 
-## Interview and next step
-Explain the input columns, target, train/test split, model and baseline before presenting the work. AI assisted code preparation; do not claim independent implementation or professional deployment. Practise changing one small input and explaining the output. Real adoption would require approved historical data, forward-time evaluation, engineering/planning review and monitoring.
+## Scope
+Educational project using synthetic data. Results require validation on real operational data.

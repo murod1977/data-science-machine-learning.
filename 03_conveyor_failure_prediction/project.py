@@ -2,37 +2,47 @@
 # %% 1. Read the inspection examples
 import pandas as pd
 import matplotlib.pyplot as plt
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import brier_score_loss, precision_score, recall_score
+import seaborn as sns
 
 df = pd.read_csv("data/synthetic_data.csv")
-print(df.head().to_string(index=False))
+print(df.head())
+df.info()
+print(df.describe().round(2))
+print("Missing values:")
+print(df.isna().sum())
 
 # %% 2. Inspect the sensor data with Pandas
 print(df[["temperature_c", "vibration_mm_s", "hours_since_service"]].describe().round(2).to_string())
 summary = df.groupby("stop_next_24h")[["temperature_c", "vibration_mm_s"]].mean()
 print(summary.round(2).to_string())
+sns.boxplot(data=df, x="stop_next_24h", y="vibration_mm_s")
+plt.title("Historical synthetic conveyor vibration")
+plt.tight_layout()
+plt.savefig("results/pandas_exploration.png")
+plt.close()
 
 # %% 3. Hold out independent conveyors
+from sklearn.model_selection import train_test_split
 X = df[["temperature_c", "vibration_mm_s", "hours_since_service"]]
 y = df["stop_next_24h"]
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=42, stratify=y)
 
 # %% 4. Put different sensor units on a comparable scale
 # Learn the scaling from training data only; reuse it on test data.
+from sklearn.preprocessing import StandardScaler
 scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 
 # %% 5. Train a model that returns a probability
+from sklearn.linear_model import LogisticRegression
 model = LogisticRegression()
 model.fit(X_train_scaled, y_train)
 probability = model.predict_proba(X_test_scaled)[:, 1]
 predicted = (probability >= 0.50).astype(int)
 
 # %% 6. Compare probability errors and inspect alerts
+from sklearn.metrics import brier_score_loss, precision_score, recall_score
 baseline = [y_train.mean()] * len(y_test)
 print(f"Model Brier score: {brier_score_loss(y_test, probability):.3f}")
 print(f"Baseline Brier score: {brier_score_loss(y_test, baseline):.3f}")
