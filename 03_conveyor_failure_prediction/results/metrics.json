@@ -1,0 +1,15 @@
+{
+  "synthetic_only": true,
+  "train_rows": 1440,
+  "test_rows": 480,
+  "split": "25% held-out groups; seed 19",
+  "seed": 73,
+  "test_prevalence": 0.25,
+  "average_precision": 0.649116393156469,
+  "baseline_average_precision": 0.25,
+  "roc_auc": 0.8409490740740742,
+  "brier_score": 0.13377621232996878,
+  "baseline_brier_score": 0.18750048225308644,
+  "precision_at_05": 0.7076923076923077,
+  "recall_at_05": 0.38333333333333336
+}
